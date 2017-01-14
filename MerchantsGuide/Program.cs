@@ -1,9 +1,15 @@
-﻿namespace MerchantsGuide
+﻿using System;
+
+namespace MerchantsGuide
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
+            var digit = "MMMMCMXCIX";
+            var dec = RomanNumberParser.Parse(digit);
+            Console.WriteLine("{0} {1}",digit,dec);
+            Console.ReadKey();
         }
     }
 }

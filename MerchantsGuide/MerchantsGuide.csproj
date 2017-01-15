@@ -41,10 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contract\IExpressionProcessorFactory.cs" />
+    <Compile Include="Expression.cs" />
+    <Compile Include="ExpressionProcessorFactory.cs" />
+    <Compile Include="Contract\ExpressionType.cs" />
+    <Compile Include="Contract\IExpression.cs" />
+    <Compile Include="Contract\IExpressionProcessor.cs" />
+    <Compile Include="Contract\IQuestionProcessor.cs" />
+    <Compile Include="Contract\IRomanNumberParser.cs" />
+    <Compile Include="Contract\IProblemContext.cs" />
+    <Compile Include="ProblemContext.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="QuestionExpression.cs" />
+    <Compile Include="Contract\QuestionExpressionType.cs" />
+    <Compile Include="QuestionExpressionProcessor.cs" />
     <Compile Include="RomanNumberParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RomanNumeral.cs" />
+    <Compile Include="RomanDigit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

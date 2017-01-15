@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace MerchantsGuide
 {
@@ -6,9 +7,18 @@ namespace MerchantsGuide
     {
         private static void Main()
         {
-            var digit = "MMMMCMXCIX";
-            var dec = RomanNumberParser.Parse(digit);
-            Console.WriteLine("{0} {1}",digit,dec);
+            var context = new ProblemContext();
+            using (var sr = new StreamReader("input.txt"))
+            {
+                while (!sr.EndOfStream)
+                {
+                    var line = sr.ReadLine();
+                    if (!string.IsNullOrEmpty(line))
+                    {
+                        context.ProcessLine(line);
+                    }
+                }
+            }
             Console.ReadKey();
         }
     }

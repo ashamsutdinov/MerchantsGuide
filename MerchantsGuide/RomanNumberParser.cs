@@ -1,30 +1,32 @@
 ﻿using System.Collections.Generic;
+using MerchantsGuide.Contract;
 
 namespace MerchantsGuide
 {
-    public class RomanNumberParser
+    public class RomanNumberParser :
+        IRomanNumberParser
     {
-        private static readonly IDictionary<string, RomanNumeral> RomanNumberSegments = new Dictionary<string, RomanNumeral>
+        private readonly IDictionary<string, RomanDigit> _romanNumberSegments = new Dictionary<string, RomanDigit>
         {
-            {"M", new RomanNumeral(1000, 4)},
-            {"CM", new RomanNumeral(900,1)},
-            {"D",new RomanNumeral(500,1)},
-            {"CD", new RomanNumeral(400,1)},
-            {"C", new RomanNumeral(100,3)},
-            {"XC", new RomanNumeral(90,1)},
-            {"L", new RomanNumeral(50, 1)},
-            {"XL", new RomanNumeral(40, 1)},
-            {"X", new RomanNumeral(10, 3)},
-            {"IX", new RomanNumeral(9, 1)},
-            {"V", new RomanNumeral(5, 1)},
-            {"IV", new RomanNumeral(4, 1)},
-            {"I", new RomanNumeral(1, 3)}
+            {"M", new RomanDigit(1000, 3)},
+            {"CM", new RomanDigit(900,1)},
+            {"D",new RomanDigit(500,1)},
+            {"CD", new RomanDigit(400,1)},
+            {"C", new RomanDigit(100,3)},
+            {"XC", new RomanDigit(90,1)},
+            {"L", new RomanDigit(50, 1)},
+            {"XL", new RomanDigit(40, 1)},
+            {"X", new RomanDigit(10, 3)},
+            {"IX", new RomanDigit(9, 1)},
+            {"V", new RomanDigit(5, 1)},
+            {"IV", new RomanDigit(4, 1)},
+            {"I", new RomanDigit(1, 3)}
         };
 
-        public static int Parse(string input)
+        public int Parse(string input)
         {
             var result = 0;
-            foreach (var romanNum in RomanNumberSegments)
+            foreach (var romanNum in _romanNumberSegments)
             {
                 if (string.IsNullOrEmpty(input))
                 {

@@ -2,6 +2,6 @@
 {
     public interface IQuestionProcessor
     {
-        string GetAnswer(QuestionExpression expression);
+        string GetAnswer(IQuestionExpression expression);
     }
 }

@@ -2,6 +2,10 @@
 {
     public interface IExpression
     {
-        ExpressionType Type { get; set; }
+        ExpressionType Type { get; }
+
+        string Left { get; }
+
+        string Right { get; }
     }
 }

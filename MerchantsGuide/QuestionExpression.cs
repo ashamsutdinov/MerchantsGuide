@@ -3,7 +3,8 @@
 namespace MerchantsGuide
 {
     public class QuestionExpression : 
-        Expression
+        Expression,
+        IQuestionExpression
     {
         public QuestionExpressionType QuestionType { get; set; }
 

@@ -11,6 +11,8 @@ namespace MerchantsGuide
 
         public IDictionary<string, string> RomanDigitsMap { get; private set; }
 
+        public IDictionary<string, IDictionary<string, double>> Quotes { get; private set; }
+
         public IExpressionProcessorFactory ExpressionProcessorFactory { get; private set; }
 
         public ProblemContext()
@@ -18,6 +20,7 @@ namespace MerchantsGuide
             RomanDigitsMap = new Dictionary<string, string>();
             RomanNumberParser = new RomanNumberParser();
             ExpressionProcessorFactory = new ExpressionProcessorFactory();
+            Quotes = new Dictionary<string, IDictionary<string, double>>();
         }
 
         public void ProcessLine(string input)
@@ -26,12 +29,15 @@ namespace MerchantsGuide
             var expression = processor.Parse(input, this);
             if (expression.Type == ExpressionType.Question)
             {
-                var question = expression as QuestionExpression;
-                var questionProcessor = processor as QuestionExpressionProcessor;
-                if (questionProcessor != null && question != null)
+                var question = expression as IQuestionExpression;
+                var questionProcessor = processor as IQuestionProcessor;
+                if (question != null && questionProcessor != null)
                 {
                     var output = questionProcessor.GetAnswer(question);
-                    Console.WriteLine(output);
+                    if (!string.IsNullOrEmpty(output))
+                    {
+                        Console.WriteLine(output);
+                    }
                 }
             }
         }

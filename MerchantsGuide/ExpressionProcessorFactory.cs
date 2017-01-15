@@ -1,14 +1,25 @@
-﻿using System;
-using MerchantsGuide.Contract;
+﻿using MerchantsGuide.Contract;
 
 namespace MerchantsGuide
 {
     public class ExpressionProcessorFactory : 
         IExpressionProcessorFactory
     {
+        private IExpressionProcessor _simpleExpressionProcessor;
+
+        private IExpressionProcessor _questionExpressionProcessor;
+
         public IExpressionProcessor Get(string input)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(input))
+                return null;
+
+            if (input.EndsWith("?"))
+            {
+                return _questionExpressionProcessor ?? (_questionExpressionProcessor = new QuestionExpressionProcessor());
+            }
+
+            return _simpleExpressionProcessor ?? (_simpleExpressionProcessor = new PreconditionExpressionProcessor());
         }
     }
 }

@@ -2,8 +2,7 @@ namespace MerchantsGuide.Contract
 {
     public enum ExpressionType
     {
-        RomanDigitMap,
-        ResourceAmountMap,
+        PreconditionMap,
         Question
     }
 }

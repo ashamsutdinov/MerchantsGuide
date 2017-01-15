@@ -8,6 +8,8 @@ namespace MerchantsGuide.Contract
 
         IDictionary<string, string> RomanDigitsMap { get; }
 
+        IDictionary<string, IDictionary<string, double>> Quotes { get; }
+        
         IExpressionProcessorFactory ExpressionProcessorFactory { get; }
 
         void ProcessLine(string input);

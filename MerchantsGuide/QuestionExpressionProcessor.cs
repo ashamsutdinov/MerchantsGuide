@@ -4,14 +4,15 @@ using MerchantsGuide.Contract;
 namespace MerchantsGuide
 {
     public class QuestionExpressionProcessor : 
-        IQuestionProcessor,
-        IExpressionProcessor
+        ExpressionProcessor,
+        IQuestionProcessor
     {
-        public IExpression Parse(string input, IProblemContext context)
+        public override IExpression ParseInternal(IExpression prototype, IProblemContext context)
         {
             throw new NotImplementedException();
         }
-        public string GetAnswer(QuestionExpression expression)
+
+        public string GetAnswer(IQuestionExpression expression)
         {
             throw new NotImplementedException();
         }

@@ -2,6 +2,6 @@
 {
     public interface IExpressionProcessor
     {
-        IExpression Parse(string input, IProblemContext context);
+        void Process(string input, IProblemContext context);
     }
 }

@@ -8,7 +8,7 @@ namespace MerchantsGuide.Contract
 
         IDictionary<string, string> RomanDigitsMap { get; }
 
-        IDictionary<string, IDictionary<string, double>> Quotes { get; }
+        IDictionary<string, IDictionary<string, decimal>> Quotes { get; }
         
         IExpressionProcessorFactory ExpressionProcessorFactory { get; }
 

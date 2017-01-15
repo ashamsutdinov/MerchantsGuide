@@ -51,7 +51,6 @@
     <Compile Include="Contract\ExpressionType.cs" />
     <Compile Include="Contract\IExpression.cs" />
     <Compile Include="Contract\IExpressionProcessor.cs" />
-    <Compile Include="Contract\IQuestionProcessor.cs" />
     <Compile Include="Contract\IRomanNumberParser.cs" />
     <Compile Include="Contract\IProblemContext.cs" />
     <Compile Include="PreconditionExpression.cs" />

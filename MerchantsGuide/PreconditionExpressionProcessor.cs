@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Net.Mime;
 using MerchantsGuide.Contract;
 
 namespace MerchantsGuide
@@ -7,7 +6,7 @@ namespace MerchantsGuide
     public class PreconditionExpressionProcessor :
         ExpressionProcessor
     {
-        public override IExpression ParseInternal(IExpression prototype, IProblemContext context)
+        public override void ProcessInternal(IExpression prototype, IProblemContext context)
         {
             var resultExpression = new PreconditionExpression
             {
@@ -22,22 +21,20 @@ namespace MerchantsGuide
             switch (resultExpression.PreconditionType)
             {
                 case PreconditionExpressionType.RomanDigit:
-                    ParseRomanDigitPrecondition(prototype, context);
+                    ProcessRomanDigitPrecondition(prototype, context);
                     break;
                 case PreconditionExpressionType.Quote:
-                    ParseQuotePrecondition(prototype, context);
+                    ProcessQuotePrecondition(prototype, context);
                     break;
             }
-
-            return resultExpression;
         }
 
-        private static void ParseRomanDigitPrecondition(IExpression prototype, IProblemContext context)
+        private static void ProcessRomanDigitPrecondition(IExpression prototype, IProblemContext context)
         {
             context.RomanDigitsMap[prototype.Left] = prototype.Right;
         }
 
-        private static void ParseQuotePrecondition(IExpression prototype, IProblemContext context)
+        private static void ProcessQuotePrecondition(IExpression prototype, IProblemContext context)
         {
             var romanNumber = "";
             var leftSegments = prototype.Left.Split(' ');
@@ -50,29 +47,29 @@ namespace MerchantsGuide
                 if (context.RomanDigitsMap.TryGetValue(segment, out romanDigit))
                 {
                     //it is roman digit
-                    romanNumber += segment;
+                    romanNumber += romanDigit;
                 }
                 else
                 {
                     //it is resource code
                     var leftResourceCode = segment;
-                    IDictionary<string, double> leftToRightQuotes;
+                    IDictionary<string, decimal> leftToRightQuotes;
                     if (!context.Quotes.TryGetValue(leftResourceCode, out leftToRightQuotes))
                     {
-                        leftToRightQuotes = new Dictionary<string, double>();
+                        leftToRightQuotes = new Dictionary<string, decimal>();
                         context.Quotes[leftResourceCode] = leftToRightQuotes;
                     }
                     var leftAmount = context.RomanNumberParser.Parse(romanNumber) * 1.0;
-                    var leftToRightQuote = rightAmount / leftAmount;
+                    var leftToRightQuote = (decimal)rightAmount / (decimal)leftAmount;
                     leftToRightQuotes[rightResourceCode] = leftToRightQuote;
 
-                    IDictionary<string, double> rightToLeftQuotes;
+                    IDictionary<string, decimal> rightToLeftQuotes;
                     if (!context.Quotes.TryGetValue(rightResourceCode, out rightToLeftQuotes))
                     {
-                        rightToLeftQuotes = new Dictionary<string, double>();
+                        rightToLeftQuotes = new Dictionary<string, decimal>();
                         context.Quotes[rightResourceCode] = rightToLeftQuotes;
                     }
-                    var rightToLeftQuote = leftAmount / rightAmount;
+                    var rightToLeftQuote = (decimal)leftAmount / (decimal)rightAmount;
                     rightToLeftQuotes[leftResourceCode] = rightToLeftQuote;
                 }
             }

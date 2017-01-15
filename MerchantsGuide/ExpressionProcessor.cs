@@ -6,11 +6,11 @@ namespace MerchantsGuide
     public abstract class ExpressionProcessor :
         IExpressionProcessor
     {
-        private const string ExpressionPartsSeparator = "is";
+        private const string ExpressionPartsSeparator = " is ";
 
         private const int ExpressionPartsNumber = 2;
 
-        public IExpression Parse(string input, IProblemContext context)
+        public void Process(string input, IProblemContext context)
         {
             try
             {
@@ -21,15 +21,14 @@ namespace MerchantsGuide
                 }
                 var left = expressionParts[0].Trim();
                 var right = expressionParts[1].Trim();
-                return ParseInternal(new Expression { Left = left, Right = right }, context);
+                ProcessInternal(new Expression { Left = left, Right = right }, context);
             }
             catch (Exception)
             {
                 Console.WriteLine("I have no idea what you are talking about");
-                return null;
             }
         }
 
-        public abstract IExpression ParseInternal(IExpression prototype, IProblemContext context);
+        public abstract void ProcessInternal(IExpression prototype, IProblemContext context);
     }
 }

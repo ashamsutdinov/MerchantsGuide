@@ -38,26 +38,12 @@ namespace MerchantsGuide
 
         private static void ProcessQuotePrecondition(IExpression prototype, IProblemContext context)
         {
-            var romanNumber = "";
             var leftSegments = prototype.Left.Split(' ');
             var rightSegments = prototype.Right.Split(' ');
             var rightAmount = double.Parse(rightSegments[0]);
             var rightResourceCode = rightSegments[1];
-            var leftResourceCode = leftSegments[leftSegments.Length - 1];
-            foreach (var segment in leftSegments.Take(leftSegments.Length - 1))
-            {
-                string romanDigit;
-                if (context.RomanDigitsMap.TryGetValue(segment, out romanDigit))
-                {
-                    //it is roman digit
-                    romanNumber += romanDigit;
-                }
-                else
-                {
-                    throw new Exception("Invalid expression");
-                }
-            }
-
+            var leftResourceCode = leftSegments.Last();
+            var romanNumber = ParseRomanNumber(leftSegments.Take(leftSegments.Length - 1), context);
             var decimalNumber = context.RomanNumberParser.Parse(romanNumber);
             if (decimalNumber == -1)
             {
@@ -69,7 +55,7 @@ namespace MerchantsGuide
                 leftToRightQuotes = new Dictionary<string, decimal>();
                 context.Quotes[leftResourceCode] = leftToRightQuotes;
             }
-            var leftAmount =  decimalNumber * 1.0;
+            var leftAmount = decimalNumber * 1.0;
             var leftToRightQuote = (decimal)rightAmount / (decimal)leftAmount;
             leftToRightQuotes[rightResourceCode] = leftToRightQuote;
 

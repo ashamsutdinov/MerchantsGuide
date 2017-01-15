@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MerchantsGuide.Contract;
 
 namespace MerchantsGuide
@@ -30,5 +31,23 @@ namespace MerchantsGuide
         }
 
         public abstract void ProcessInternal(IExpression prototype, IProblemContext context);
+
+        protected static string ParseRomanNumber(IEnumerable<string> segments, IProblemContext context)
+        {
+            var romanNumber = "";
+            foreach (var segment in segments)
+            {
+                string romanDigit;
+                if (context.RomanDigitsMap.TryGetValue(segment, out romanDigit))
+                {
+                    romanNumber += romanDigit;
+                }
+                else
+                {
+                    throw new Exception("Invalid expression");
+                }
+            }
+            return romanNumber;
+        }
     }
 }

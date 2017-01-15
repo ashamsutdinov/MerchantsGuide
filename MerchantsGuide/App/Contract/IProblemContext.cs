@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MerchantsGuide.Contract
+namespace MerchantsGuide.App.Contract
 {
     public interface IProblemContext
     {

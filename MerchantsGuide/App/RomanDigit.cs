@@ -1,4 +1,4 @@
-﻿namespace MerchantsGuide
+﻿namespace MerchantsGuide.App
 {
     public class RomanDigit
     {

@@ -1,4 +1,4 @@
-﻿namespace MerchantsGuide.Contract
+﻿namespace MerchantsGuide.App.Contract
 {
     public interface IPreconditionExpression
     {

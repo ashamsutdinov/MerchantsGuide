@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using MerchantsGuide.Contract;
+using MerchantsGuide.App;
+using MerchantsGuide.App.Contract;
 
 namespace MerchantsGuide
 {

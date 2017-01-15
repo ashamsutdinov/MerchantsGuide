@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MerchantsGuide.Contract;
+using MerchantsGuide.App.Contract;
 
-namespace MerchantsGuide
+namespace MerchantsGuide.App
 {
     public class PreconditionExpressionProcessor :
         ExpressionProcessor

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using MerchantsGuide.Contract;
+using MerchantsGuide.App.Contract;
 
-namespace MerchantsGuide
+namespace MerchantsGuide.App
 {
     public abstract class ExpressionProcessor :
         IExpressionProcessor

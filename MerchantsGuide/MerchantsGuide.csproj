@@ -41,28 +41,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contract\IExpressionProcessorFactory.cs" />
-    <Compile Include="Contract\IPreconditionExpression.cs" />
-    <Compile Include="Contract\IQuestionExpression.cs" />
-    <Compile Include="Contract\PreconditionExpressionType.cs" />
-    <Compile Include="Expression.cs" />
-    <Compile Include="ExpressionProcessor.cs" />
-    <Compile Include="ExpressionProcessorFactory.cs" />
-    <Compile Include="Contract\ExpressionType.cs" />
-    <Compile Include="Contract\IExpression.cs" />
-    <Compile Include="Contract\IExpressionProcessor.cs" />
-    <Compile Include="Contract\IRomanNumberParser.cs" />
-    <Compile Include="Contract\IProblemContext.cs" />
-    <Compile Include="PreconditionExpression.cs" />
+    <Compile Include="App\Contract\IExpressionProcessorFactory.cs" />
+    <Compile Include="App\Contract\IPreconditionExpression.cs" />
+    <Compile Include="App\Contract\IQuestionExpression.cs" />
+    <Compile Include="App\Contract\PreconditionExpressionType.cs" />
+    <Compile Include="App\Expression.cs" />
+    <Compile Include="App\ExpressionProcessor.cs" />
+    <Compile Include="App\ExpressionProcessorFactory.cs" />
+    <Compile Include="App\Contract\ExpressionType.cs" />
+    <Compile Include="App\Contract\IExpression.cs" />
+    <Compile Include="App\Contract\IExpressionProcessor.cs" />
+    <Compile Include="App\Contract\IRomanNumberParser.cs" />
+    <Compile Include="App\Contract\IProblemContext.cs" />
+    <Compile Include="App\PreconditionExpression.cs" />
     <Compile Include="ProblemContext.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="QuestionExpression.cs" />
-    <Compile Include="Contract\QuestionExpressionType.cs" />
-    <Compile Include="QuestionExpressionProcessor.cs" />
-    <Compile Include="RomanNumberParser.cs" />
+    <Compile Include="App\QuestionExpression.cs" />
+    <Compile Include="App\Contract\QuestionExpressionType.cs" />
+    <Compile Include="App\QuestionExpressionProcessor.cs" />
+    <Compile Include="App\RomanNumberParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RomanDigit.cs" />
-    <Compile Include="PreconditionExpressionProcessor.cs" />
+    <Compile Include="App\RomanDigit.cs" />
+    <Compile Include="App\PreconditionExpressionProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="input.txt">

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using MerchantsGuide.Contract;
 
 namespace MerchantsGuide
@@ -41,7 +43,8 @@ namespace MerchantsGuide
             var rightSegments = prototype.Right.Split(' ');
             var rightAmount = double.Parse(rightSegments[0]);
             var rightResourceCode = rightSegments[1];
-            foreach (var segment in leftSegments)
+            var leftResourceCode = leftSegments[leftSegments.Length - 1];
+            foreach (var segment in leftSegments.Take(leftSegments.Length - 1))
             {
                 string romanDigit;
                 if (context.RomanDigitsMap.TryGetValue(segment, out romanDigit))
@@ -51,28 +54,33 @@ namespace MerchantsGuide
                 }
                 else
                 {
-                    //it is resource code
-                    var leftResourceCode = segment;
-                    IDictionary<string, decimal> leftToRightQuotes;
-                    if (!context.Quotes.TryGetValue(leftResourceCode, out leftToRightQuotes))
-                    {
-                        leftToRightQuotes = new Dictionary<string, decimal>();
-                        context.Quotes[leftResourceCode] = leftToRightQuotes;
-                    }
-                    var leftAmount = context.RomanNumberParser.Parse(romanNumber) * 1.0;
-                    var leftToRightQuote = (decimal)rightAmount / (decimal)leftAmount;
-                    leftToRightQuotes[rightResourceCode] = leftToRightQuote;
-
-                    IDictionary<string, decimal> rightToLeftQuotes;
-                    if (!context.Quotes.TryGetValue(rightResourceCode, out rightToLeftQuotes))
-                    {
-                        rightToLeftQuotes = new Dictionary<string, decimal>();
-                        context.Quotes[rightResourceCode] = rightToLeftQuotes;
-                    }
-                    var rightToLeftQuote = (decimal)leftAmount / (decimal)rightAmount;
-                    rightToLeftQuotes[leftResourceCode] = rightToLeftQuote;
+                    throw new Exception("Invalid expression");
                 }
             }
+
+            var decimalNumber = context.RomanNumberParser.Parse(romanNumber);
+            if (decimalNumber == -1)
+            {
+                throw new Exception("Invalid expression");
+            }
+            IDictionary<string, decimal> leftToRightQuotes;
+            if (!context.Quotes.TryGetValue(leftResourceCode, out leftToRightQuotes))
+            {
+                leftToRightQuotes = new Dictionary<string, decimal>();
+                context.Quotes[leftResourceCode] = leftToRightQuotes;
+            }
+            var leftAmount =  decimalNumber * 1.0;
+            var leftToRightQuote = (decimal)rightAmount / (decimal)leftAmount;
+            leftToRightQuotes[rightResourceCode] = leftToRightQuote;
+
+            IDictionary<string, decimal> rightToLeftQuotes;
+            if (!context.Quotes.TryGetValue(rightResourceCode, out rightToLeftQuotes))
+            {
+                rightToLeftQuotes = new Dictionary<string, decimal>();
+                context.Quotes[rightResourceCode] = rightToLeftQuotes;
+            }
+            var rightToLeftQuote = (decimal)leftAmount / (decimal)rightAmount;
+            rightToLeftQuotes[leftResourceCode] = rightToLeftQuote;
         }
     }
 }

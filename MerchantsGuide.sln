@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantsGuide", "MerchantsGuide\MerchantsGuide.csproj", "{746FD3A6-EB2C-47CA-859C-EFE16EF094A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageReceiver", "MessageReceiver\MessageReceiver.csproj", "{3E6C11DC-19D5-4505-AF1E-8CCB67B88A22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageSender", "MessageSender\MessageSender.csproj", "{16FC8EA1-F918-4C9F-8652-7604B2A91DCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{746FD3A6-EB2C-47CA-859C-EFE16EF094A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{746FD3A6-EB2C-47CA-859C-EFE16EF094A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{746FD3A6-EB2C-47CA-859C-EFE16EF094A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E6C11DC-19D5-4505-AF1E-8CCB67B88A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E6C11DC-19D5-4505-AF1E-8CCB67B88A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E6C11DC-19D5-4505-AF1E-8CCB67B88A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E6C11DC-19D5-4505-AF1E-8CCB67B88A22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16FC8EA1-F918-4C9F-8652-7604B2A91DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16FC8EA1-F918-4C9F-8652-7604B2A91DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16FC8EA1-F918-4C9F-8652-7604B2A91DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16FC8EA1-F918-4C9F-8652-7604B2A91DCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
